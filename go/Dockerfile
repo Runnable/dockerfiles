@@ -45,6 +45,8 @@ RUN apt-get install -y -q mysql-server
 RUN apt-get install -y -q golang
 RUN apt-get install -y -q mercurial
 RUN apt-get install -y -q bison
+RUN apt-get install -y -q binutils
+RUN apt-get install -y -q gcc
 RUN bash < <(curl -s https://raw.github.com/moovweb/gvm/master/binscripts/gvm-installer)
 RUN gvm install go1.1.1
 RUN gvm use go1.1.1
