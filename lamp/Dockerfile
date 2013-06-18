@@ -30,8 +30,8 @@ RUN apt-get install -y -q g++
 
 ## PHP
 RUN apt-get install -y -q php5
+RUN apt-get install -y -q php5-dev
 RUN apt-get install -y -q php-pear
-pt-get install -y -q libtiff-dev
 
 # SERVICES
 
@@ -43,7 +43,7 @@ RUN apt-get install -y -q memcached
 RUN apt-get install -y -q imagemagick
 RUN apt-get install -y -q graphicsmagick
 RUN apt-get install -y -q graphicsmagick-libmagick-dev-compat
-RUN pecl install -y imagick
+RUN pecl install imagick
 
 ## APACHE
 RUN apt-get install -y -q apache2
