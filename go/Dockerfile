@@ -48,6 +48,7 @@ RUN apt-get install -y -q bison
 RUN apt-get install -y -q binutils
 RUN apt-get install -y -q gcc
 RUN curl -s https://raw.github.com/moovweb/gvm/master/binscripts/gvm-installer | bash
+RUN source $HOME/.gvm/scripts/gvm
 RUN gvm install go1.1.1
 RUN gvm use go1.1.1
 
