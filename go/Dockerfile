@@ -47,7 +47,7 @@ RUN apt-get install -y -q mercurial
 RUN apt-get install -y -q bison
 RUN apt-get install -y -q binutils
 RUN apt-get install -y -q gcc
-RUN bash < <(curl -s https://raw.github.com/moovweb/gvm/master/binscripts/gvm-installer) || true
+RUN curl -s https://raw.github.com/moovweb/gvm/master/binscripts/gvm-installer | bash
 RUN gvm install go1.1.1
 RUN gvm use go1.1.1
 
