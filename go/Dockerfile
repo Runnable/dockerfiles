@@ -41,7 +41,11 @@ RUN apt-get install -y -q mysql-server
 
 # LANGS
 
-## GO
-RUN apt-get install -y -q golang
+# GVM
+RUN apt-get install -y -q mercurial
+RUN apt-get install -y -q bison
+RUN bash < <(curl -s https://raw.github.com/moovweb/gvm/master/binscripts/gvm-installer)
+RUN gvm install go1.1.1
+RUN gvm use go1.1.1
 
 ENV DEBIAN_FRONTEND dialog
