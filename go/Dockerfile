@@ -42,6 +42,7 @@ RUN apt-get install -y -q mysql-server
 # LANGS
 
 # GVM
+RUN apt-get install -y -q golang
 RUN apt-get install -y -q mercurial
 RUN apt-get install -y -q bison
 RUN bash < <(curl -s https://raw.github.com/moovweb/gvm/master/binscripts/gvm-installer)
