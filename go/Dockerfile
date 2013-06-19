@@ -1,5 +1,5 @@
 # runnable base
-FROM ubuntu:12.10
+FROM boxcar/raring
 
 # REPOS
 RUN apt-get -y update
