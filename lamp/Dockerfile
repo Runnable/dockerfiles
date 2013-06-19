@@ -33,7 +33,11 @@ RUN apt-get install -y -q php5
 RUN apt-get install -y -q php5-cli
 RUN apt-get install -y -q php5-dev
 RUN apt-get install -y -q php-pear
-php5-cli php5-mysql libapache2-mod-php5
+RUN apt-get install -y -q php5-fpm
+RUN apt-get install -y -q php5-common
+RUN apt-get install -y -q php5-mcrypt
+RUN apt-get install -y -q php5-gd
+RUN apt-get install -y -q php-apc
 
 # SERVICES
 
