@@ -1,0 +1,10 @@
+{
+  "name": "HelloWorld",
+  "author": "Runnable",
+  "version": "0.0.1",
+  "description": "Runnable Sample Application",
+  "dependencies": {
+    "express": "2.x"
+   },
+  "engine": "node 0.6.x"
+}
