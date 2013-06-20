@@ -66,13 +66,12 @@ ENV RUNNABLE_START_CMD npm start
 
 # FILES
 
-ADD helloworld/server.js /root/
-ADD helloworld/package.json /root/
+ADD helloworld /root/
 
 
-# DOCKWORKER
-ADD /home/ubuntu/dockworker/dockworker.js /
-ADD /home/ubuntu/dockworker/package.json /
+# DOCKWORKER]
+RUN mkdir /dockworker
+ADD /home/ubuntu/dockworker /dockworker
 RUN cd /dockworker && npm install
 run cd /dockworker && npm start
 
