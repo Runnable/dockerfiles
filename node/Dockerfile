@@ -71,10 +71,8 @@ ADD helloworld/package.json /root/
 
 
 # DOCKWORKER
-
-RUN mkdir /dockworker/
-ADD /home/ubuntu/dockworker/dockworker.js /dockworker/
-ADD /home/ubuntu/dockworker/package.json /dockworker/
+ADD /home/ubuntu/dockworker/dockworker.js /
+ADD /home/ubuntu/dockworker/package.json /
 RUN cd /dockworker && npm install
 run cd /dockworker && npm start
 
