@@ -71,8 +71,8 @@ ADD helloworld/package.json /root/
 
 # DOCKWORKER
 RUN mkdir /dockworker
-ADD https://raw.github.com/Runnable/dockworker/master/dockworker.js /dockworker/
-ADD https://raw.github.com/Runnable/dockworker/master/package.json /dockworker/
+RUN cd /dockworker && curl https://raw.github.com/Runnable/dockworker/master/dockworker.js > dockworker.js
+RUN cd /dockworker && curl https://raw.github.com/Runnable/dockworker/master/package.json > package.json
 RUN cd /dockworker && npm install
 run cd /dockworker && npm start
 
