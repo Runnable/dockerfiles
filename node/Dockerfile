@@ -58,11 +58,25 @@ RUN npm install serve -g
 
 ENV DEBIAN_FRONTEND dialog
 
-# FILES
-
-#ADD /user/file /root/
-
 # ENV
+
 ENV RUNNABLE_USER_DIR /root/
 ENV RUNNABLE_SERVICE_CMDS mongod;redis-server;
 ENV RUNNABLE_START_CMD npm start
+
+
+# FILES
+
+ADD helloworld/server.js /root/
+ADD helloworld/package.json /root/
+
+
+# DOCKWORKER
+
+RUN mkdir /dockworker/
+ADD ../../dockworker/dockworker.js /dockworker/
+ADD ../../dockworker/package.json /dockworker/
+RUN cd /dockworker && npm install
+run cd /dockworker && npm start
+
+
