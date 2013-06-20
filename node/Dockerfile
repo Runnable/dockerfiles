@@ -59,7 +59,6 @@ RUN npm install serve -g
 ENV DEBIAN_FRONTEND dialog
 
 # ENV
-
 ENV RUNNABLE_USER_DIR /root/
 ENV RUNNABLE_SERVICE_CMDS mongod;redis-server;
 ENV RUNNABLE_START_CMD npm start
