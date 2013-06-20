@@ -60,7 +60,7 @@ ENV DEBIAN_FRONTEND dialog
 
 # FILES
 
-#ADD /user/file /root/
+ADD ./helloworld /root/
 
 # ENV
 ENV RUNNABLE_USER_DIR /root/
