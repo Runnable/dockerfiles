@@ -54,4 +54,6 @@ RUN apt-get install -y -q mysql-server
 ## NODE
 RUN apt-get install -y -q nodejs
 
+npm install serve -g
+
 ENV DEBIAN_FRONTEND dialog
