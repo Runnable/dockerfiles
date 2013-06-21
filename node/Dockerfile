@@ -41,8 +41,7 @@ RUN apt-get install -y -q redis-server
 RUN apt-get install -y -q mongodb-10gen
 
 ## SETUP DBPATH
-mkdir /data
-mkdir /data/db
+RUN mkdir -p /data/db
 
 ## MAGICK
 RUN apt-get install -y -q imagemagick
