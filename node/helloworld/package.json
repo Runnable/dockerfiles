@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "description": "Runnable Sample Application",
   "dependencies": {
-    "express": "2.x"
+    "express": "2.x",
+    "redis" : "*"
    },
-  "engine": "node 0.6.x"
+  "engine": "node 0.10.x"
 }
