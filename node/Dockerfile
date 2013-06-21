@@ -60,7 +60,7 @@ ENV DEBIAN_FRONTEND dialog
 ENV RUNNABLE_USER_DIR /root/
 ENV RUNNABLE_SERVICE_CMDS mongod;redis-server;
 ENV RUNNABLE_START_CMD npm start
-
+EXPOSE 80
 
 # FILES
 
@@ -73,6 +73,7 @@ RUN mkdir /dockworker
 RUN cd /dockworker && curl https://raw.github.com/Runnable/dockworker/master/dockworker.js > dockworker.js
 RUN cd /dockworker && curl https://raw.github.com/Runnable/dockworker/master/package.json > package.json
 RUN cd /dockworker && npm install
+EXPOSE 15000
 CMD node /dockworker/dockworker.js
 
 
