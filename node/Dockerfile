@@ -43,11 +43,6 @@ RUN apt-get install -y -q mongodb-10gen
 ## SETUP DBPATH
 RUN mkdir -p /data/db
 
-## MAGICK
-RUN apt-get install -y -q imagemagick
-RUN apt-get install -y -q graphicsmagick
-RUN apt-get install -y -q graphicsmagick-libmagick-dev-compat
-
 ## MYSQL
 RUN apt-get install -y -q mysql-client
 RUN apt-get install -y -q mysql-server
@@ -76,7 +71,5 @@ RUN cd /root && npm install
 # DOCKWORKER
 RUN mkdir /dockworker
 RUN cd /dockworker && curl https://raw.github.com/Runnable/dockworker/master/dockworker.js > dockworker.js
-RUN cd /dockworker && curl https://raw.github.com/Runnable/dockworker/master/package.json > package.json
-RUN cd /dockworker && npm install
 
 
