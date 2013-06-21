@@ -40,6 +40,10 @@ RUN apt-get install -y -q redis-server
 ## MONGO
 RUN apt-get install -y -q mongodb-10gen
 
+## SETUP DBPATH
+mkdir /data
+mkdir /data/db
+
 ## MAGICK
 RUN apt-get install -y -q imagemagick
 RUN apt-get install -y -q graphicsmagick
