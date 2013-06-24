@@ -10,3 +10,6 @@ http.createServer(function (req, res) {
 }).listen(80);
 console.log('Hello Kitty');
 redis.set("foo", "bar");
+setInterval(function () {
+  console.log('foo');
+}, 3000);
