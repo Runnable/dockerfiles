@@ -64,7 +64,15 @@ RUN apt-get install -y -q php5-mysql
 ## CAKE
 #ADD cake.json /root/cake.json
 #RUN cd /root && php composer.phar install
+RUN a2enmod php5 rewrite
 RUN apt-get install -y -q cakephp
+RUN rm -R /usr/share/php/cake
+RUN cd /usr/share/php && wget https://github.com/cakephp/cakephp/tarball/2.2.2
+RUN cd /usr/share/php && tar -xzf 2.2.2
+RUN cd /usr/share/php && mv cakephp-cakephp-ac41b42 cakephp
+RUN cd /usr/share/php && rm -R 2.2.2
+RUN cd /usr/bin && rm -R cake
+RUN cd /usr/bin && ln -s /usr/share/php/cakephp/lib/Cake/Console/cake
 
 # RESET
 
