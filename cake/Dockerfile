@@ -38,6 +38,7 @@ RUN apt-get install -y -q php5-common
 RUN apt-get install -y -q php5-mcrypt
 RUN apt-get install -y -q php5-gd
 RUN apt-get install -y -q php-apc
+RUN curl -sS https://getcomposer.org/installer | php
 
 # SERVICES
 
@@ -61,8 +62,8 @@ RUN apt-get install -y -q mysql-server
 RUN apt-get install -y -q php5-mysql
 
 ## CAKE
-RUN pear channel-discover pear.cakephp.org
-RUN pear install cakephp/CakePHP
+ADD cake.json /root/cake.json
+RUN cd /root && php composer.phar install
 
 # RESET
 
