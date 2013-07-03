@@ -65,4 +65,7 @@ RUN apt-get install -y -q liblcms1-dev
 RUN apt-get install -y -q libwebp-dev
 RUN apt-get install -y -q libtiff-dev
 
+# Django
+RUN easy_install django
+
 ENV DEBIAN_FRONTEND dialog
