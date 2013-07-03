@@ -64,8 +64,8 @@ RUN apt-get install -y -q php5-mysql
 RUN a2enmod php5 rewrite
 # RUN apt-get install -y -q cakephp
 RUN useradd -m ubuntu
-RUN sudo su ubuntu; pear channel-discover pear.cakephp.org
-RUN sudo su ubuntu; pear install cakephp/CakePHP
+RUN sudo -u ubuntu pear channel-discover pear.cakephp.org
+RUN sudo -u ubuntu pear install cakephp/CakePHP
 
 # RESET
 
