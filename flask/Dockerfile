@@ -67,6 +67,6 @@ RUN apt-get install -y -q libwebp-dev
 RUN apt-get install -y -q libtiff-dev
 
 #flask
-pip install Flask
+RUN pip install Flask
 
 ENV DEBIAN_FRONTEND dialog
