@@ -52,6 +52,7 @@ RUN apt-get install -y -q mysql-server
 RUN apt-get install -y -q python-software-properties
 RUN apt-get install -y -q python
 RUN apt-get install -y -q python-setuptools
+RUN apt-get install -y -q python-virtualenv
 RUN apt-get install -y -q python-dev
 RUN apt-get install -y -q python-distribute
 RUN apt-get install -y -q python-pip
