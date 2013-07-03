@@ -62,8 +62,9 @@ RUN apt-get install -y -q mysql-server
 RUN apt-get install -y -q php5-mysql
 
 ## CAKE
-ADD cake.json /root/cake.json
-RUN cd /root && php composer.phar install
+#ADD cake.json /root/cake.json
+#RUN cd /root && php composer.phar install
+RUN apt-get install -y -q cakephp
 
 # RESET
 
