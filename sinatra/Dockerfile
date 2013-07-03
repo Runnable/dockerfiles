@@ -63,7 +63,7 @@ RUN apt-get install -y -q mysql-server
 ## RUBY
 RUN apt-get install -y -q ruby
 
-## RAILS
-RUN gem install rails
+## SINATRA
+RUN gem install sinatra
 
 ENV DEBIAN_FRONTEND dialog
