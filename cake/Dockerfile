@@ -61,7 +61,8 @@ RUN apt-get install -y -q mysql-server
 RUN apt-get install -y -q php5-mysql
 
 ## CAKE
-RUN git clone git://github.com/cakephp/cakephp.git ~/projects/cakephp
+RUN pear channel-discover pear.cakephp.org
+RUN pear install cakephp/CakePHP
 
 # RESET
 
