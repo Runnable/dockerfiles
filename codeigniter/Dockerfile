@@ -67,3 +67,7 @@ RUN cd /root && git clone https://github.com/EllisLab/CodeIgniter.git
 # RESET
 
 ENV DEBIAN_FRONTEND dialog
+
+## CONFIG
+ENV RUNNABLE_USER_DIR /root/CodeIgniter/application
+ENV RUNNABLE_SERVICE_CMDS memcached -d -u nobody; /etc/init.d/apache2 restart; start mysql
