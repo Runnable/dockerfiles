@@ -62,10 +62,7 @@ RUN apt-get install -y -q php5-mysql
 
 ## CAKE
 RUN a2enmod php5 rewrite
-# RUN apt-get install -y -q cakephp
-RUN useradd -m ubuntu
-RUN sudo -u ubuntu pear channel-discover pear.cakephp.org
-RUN sudo -u ubuntu pear install cakephp/CakePHP
+RUN cd /root && git clone https://github.com/cakephp/cakephp.git
 
 # RESET
 
