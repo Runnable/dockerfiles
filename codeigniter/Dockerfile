@@ -5,6 +5,7 @@ FROM boxcar/raring
 RUN apt-get -y update
 RUN apt-get install -y -q software-properties-common
 RUN add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
+RUN add-apt-repository -y ppa:chris-lea/node.js
 RUN apt-get -y update
 
 #SHIMS
@@ -39,6 +40,9 @@ RUN apt-get install -y -q php5-mcrypt
 RUN apt-get install -y -q php5-gd
 RUN apt-get install -y -q php-apc
 
+## NODE
+RUN apt-get install -y -q nodejs
+
 # SERVICES
 
 ## MEMCACHED
@@ -70,4 +74,4 @@ ENV DEBIAN_FRONTEND dialog
 
 ## CONFIG
 ENV RUNNABLE_USER_DIR /root/CodeIgniter/application
-ENV RUNNABLE_SERVICE_CMDS memcached -d -u nobody; /etc/init.d/apache2 restart; start mysql
+ENV RUNNABLE_SERVICE_CMDS memcached -d -u nobody; /etc/init.d/apache2 restart; mysqld
