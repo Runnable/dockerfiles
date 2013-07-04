@@ -63,6 +63,7 @@ RUN apt-get install -y -q php5-mysql
 ## CAKE
 RUN a2enmod php5 rewrite
 RUN cd /root && git clone https://github.com/cakephp/cakephp.git
+RUN ln -s /root/cakephp/lib/Cake/Console/cake /bin/cake
 
 # RESET
 
