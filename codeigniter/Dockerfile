@@ -34,7 +34,7 @@ RUN apt-get install -y -q nodejs
 
 ## MEMCACHED
 RUN apt-get install -y -q memcached
-RUN pecl install -y memcache
+RUN pecl install memcache
 
 ## MAGICK
 RUN apt-get install -y -q imagemagick graphicsmagick graphicsmagick-libmagick-dev-compat
