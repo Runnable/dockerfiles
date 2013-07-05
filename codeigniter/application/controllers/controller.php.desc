@@ -1,0 +1,1 @@
+This is the Controller file used to connect to the database, load the Model, and use the Model to execute database operations. It's located under /applications/controllers.

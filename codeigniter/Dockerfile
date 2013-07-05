@@ -50,6 +50,7 @@ RUN apt-get install -y -q mysql-client mysql-server php5-mysql
 RUN a2enmod php5 rewrite
 RUN rm -rf /var/www/*
 RUN git clone https://github.com/EllisLab/CodeIgniter.git /var/www
+ADD application /var/www/application
 
 # RESET
 

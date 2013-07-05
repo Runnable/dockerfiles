@@ -1,0 +1,1 @@
+This is the Model file that contains functions that perform queries on the database to retrieve data and make changes. It's located under /application/models.

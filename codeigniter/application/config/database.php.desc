@@ -1,0 +1,1 @@
+This is a config file that contains information necessary to connect to the database, such as the host, username, password, and port. The values specified in this file are specific to Runnable, and should be changed when running this code on another server. It's located under /application/config.

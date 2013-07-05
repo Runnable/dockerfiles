@@ -1,0 +1,1 @@
+This is a config file used to specify which Controller to use when the user navigates to a specific route. The change was made to use "controller.php". It's located under /application/config.
