@@ -16,6 +16,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get install -y -q apache2
 RUN apt-get install -y -q nginx
 RUN apt-get install -y -q lighttpd
+RUN add-apt-repository ppa:cherokee-webserver
+RUN apt-get -y update
 RUN apt-get install -y -q cherokee
 
 ENV DEBIAN_FRONTEND dialog
