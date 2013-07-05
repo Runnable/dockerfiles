@@ -20,4 +20,6 @@ RUN add-apt-repository ppa:cherokee-webserver
 RUN apt-get -y update
 RUN apt-get install -y -q cherokee
 
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
 ENV DEBIAN_FRONTEND dialog
