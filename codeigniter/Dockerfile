@@ -14,31 +14,18 @@ RUN ln -s /bin/true /sbin/initctl
 ENV DEBIAN_FRONTEND noninteractive
 
 # EDITORS
-RUN apt-get install -y -q vim
-RUN apt-get install -y -q nano
+RUN apt-get install -y -q vim nano
 
 # TOOLS
-RUN apt-get install -y -q curl
-RUN apt-get install -y -q git
-RUN apt-get install -y -q make
-RUN apt-get install -y -q wget
+RUN apt-get install -y -q curl git make wget
 
 # BUILD
-RUN apt-get install -y -q build-essential
-RUN apt-get install -y -q g++
+RUN apt-get install -y -q build-essential g++
 
 # LANGS
 
 ## PHP
-RUN apt-get install -y -q php5
-RUN apt-get install -y -q php5-cli
-RUN apt-get install -y -q php5-dev
-RUN apt-get install -y -q php-pear
-RUN apt-get install -y -q php5-fpm
-RUN apt-get install -y -q php5-common
-RUN apt-get install -y -q php5-mcrypt
-RUN apt-get install -y -q php5-gd
-RUN apt-get install -y -q php-apc
+RUN apt-get install -y -q php5 php5-cli php5-dev php-pear php5-fpm php5-common php5-mcrypt php5-gd php-apc
 
 ## NODE
 RUN apt-get install -y -q nodejs
@@ -47,22 +34,17 @@ RUN apt-get install -y -q nodejs
 
 ## MEMCACHED
 RUN apt-get install -y -q memcached
-#RUN pecl install -y memcache
+RUN pecl install -y memcache
 
 ## MAGICK
-RUN apt-get install -y -q imagemagick
-RUN apt-get install -y -q graphicsmagick
-RUN apt-get install -y -q graphicsmagick-libmagick-dev-compat
+RUN apt-get install -y -q imagemagick graphicsmagick graphicsmagick-libmagick-dev-compat
 RUN pecl install imagick
 
 ## APACHE
-RUN apt-get install -y -q apache2
-RUN apt-get install -y -q libapache2-mod-php5
+RUN apt-get install -y -q apache2 libapache2-mod-php5
 
 ## MYSQL
-RUN apt-get install -y -q mysql-client
-RUN apt-get install -y -q mysql-server
-RUN apt-get install -y -q php5-mysql
+RUN apt-get install -y -q mysql-client mysql-server php5-mysql
 
 ## CODEIGNITER
 RUN a2enmod php5 rewrite
