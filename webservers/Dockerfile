@@ -6,7 +6,6 @@ RUN apt-get -y update
 RUN apt-get install -y -q software-properties-common
 RUN add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
 RUN apt-get -y update
-RUN apt-get -y upgrade
 
 #SHIMS
 RUN dpkg-divert --local --rename --add /sbin/initctl
