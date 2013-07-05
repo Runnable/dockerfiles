@@ -48,12 +48,12 @@ RUN apt-get install -y -q mysql-client mysql-server php5-mysql
 
 ## CODEIGNITER
 RUN a2enmod php5 rewrite
-RUN cd /root && git clone https://github.com/EllisLab/CodeIgniter.git
+RUN git clone https://github.com/EllisLab/CodeIgniter.git /var/www
 
 # RESET
 
 ENV DEBIAN_FRONTEND dialog
 
 ## CONFIG
-ENV RUNNABLE_USER_DIR /root/CodeIgniter/application
-ENV RUNNABLE_SERVICE_CMDS memcached -d -u nobody; /etc/init.d/apache2 restart; mysqld
+ENV RUNNABLE_USER_DIR /var/www/application
+ENV RUNNABLE_SERVICE_CMDS memcached -d -u www-data; /etc/init.d/apache2 restart; mysqld
