@@ -45,6 +45,7 @@ RUN apt-get install -y -q apache2 libapache2-mod-php5
 
 ## MYSQL
 RUN apt-get install -y -q mysql-client mysql-server php5-mysql
+RUN mysqladmin create mydb
 
 ## CODEIGNITER
 RUN a2enmod php5 rewrite
