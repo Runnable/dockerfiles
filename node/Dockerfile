@@ -16,23 +16,19 @@ RUN ln -s /bin/true /sbin/initctl
 ENV DEBIAN_FRONTEND noninteractive
 
 # EDITORS
-RUN apt-get install -y -q vim
-RUN apt-get install -y -q nano
+RUN apt-get install -y -q vim nano
 
 # TOOLS
-RUN apt-get install -y -q curl
-RUN apt-get install -y -q git
-RUN apt-get install -y -q make
-RUN apt-get install -y -q wget
+RUN apt-get install -y -q curl git make wget
 
 # BUILD
-RUN apt-get install -y -q build-essential
-RUN apt-get install -y -q g++
+RUN apt-get install -y -q build-essential g++
 
 # SERVICES
 
 ## COUCHDB
 RUN apt-get install -y -q couchdb
+RUN mkdir -p /var/run/couchdb
 
 ## REDIS
 RUN apt-get install -y -q redis-server
@@ -44,24 +40,20 @@ RUN apt-get install -y -q mongodb-10gen
 RUN mkdir -p /data/db
 
 ## MYSQL
-RUN apt-get install -y -q mysql-client
-RUN apt-get install -y -q mysql-server
+RUN apt-get install -y -q mysql-client mysql-server
 
 # LANGS
 
 ## NODE
 RUN apt-get install -y -q nodejs
 
-RUN npm install serve -g
+## APP
+ADD helloworld /root
 
+# RESET
 ENV DEBIAN_FRONTEND dialog
 
-# DOCKWORKER
-RUN mkdir /dockworker
-RUN cd /dockworker && curl https://raw.github.com/Runnable/dockworker/master/dockworker.js > dockworker.js
-RUN cd /dockworker && curl https://raw.github.com/Runnable/dockworker/master/package.json > package.json
-RUN cd /dockworker && npm install
-EXPOSE 80 15000
-CMD node /dockworker/dockworker.js
-
-
+## CONFIG
+ENV RUNNABLE_USER_DIR /root
+ENV RUNNABLE_SERVICE_CMDS couchdb; redis-server; mongod; mysqld
+ENV RUNNABLE_START_CMD npm start
