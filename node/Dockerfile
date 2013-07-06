@@ -49,6 +49,7 @@ RUN apt-get install -y -q nodejs
 
 ## APP
 ADD helloworld /root
+RUN cd /root && npm install
 
 # RESET
 ENV DEBIAN_FRONTEND dialog
