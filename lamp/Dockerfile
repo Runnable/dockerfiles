@@ -48,6 +48,7 @@ RUN apt-get install -y -q mysql-client mysql-server php5-mysql
 RUN mysqld & sleep 2 && mysqladmin create mydb
 
 ## APP
+RUN rm -rf /var/www/*
 ADD app /var/www
 
 # RESET
