@@ -56,5 +56,5 @@ ADD app /var/www
 ENV DEBIAN_FRONTEND dialog
 
 ## CONFIG
-ENV RUNNABLE_USER_DIR /var/www/application
+ENV RUNNABLE_USER_DIR /var/www
 ENV RUNNABLE_SERVICE_CMDS memcached -d -u www-data; /etc/init.d/apache2 restart; mysqld
