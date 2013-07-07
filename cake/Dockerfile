@@ -52,6 +52,7 @@ RUN a2enmod php5 rewrite
 RUN rm -rf /var/www/*
 RUN git clone https://github.com/cakephp/cakephp.git /var/www
 RUN ln -s /var/www/lib/Cake/Console/cake /bin/cake
+RUN chown -R www-data /var/www/app/tmp
 # ADD app /var/www/app
 
 # RESET
