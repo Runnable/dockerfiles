@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Google server-side OAuth v2 Example</title>
+	<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript">
+
+		var url = '';
+		var w = '';
+		$(document).ready(function() { 
+
+			$.get('/login', function(data) {
+				url = data;
+			});
+
+			var interval = window.setInterval((function() {
+			 	if (w.closed) {
+			 		window.clearInterval(interval);
+			 		window.location = '/user';
+			 	}
+			 }),1000);
+		});
+	</script>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+<body>
+  <h1 id="header">Google OAuth: Retrieve user details</h1>
+  <p>Log into Google by clicking on the button below to get started.</p>
+<button id="fb-login" onclick="w = window.open(url, 'window', 'status=0,menubar=0,resizable=1,width=500,height=800;')">Login to Google</button>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "facebook-oauthv2-js-sdk-example",
+  "version": "0.0.1",
+  "description": "A sample code project using Google to perform server-side OAuth v2",
+  "dependencies": {
+  	"express": "*",
+  	"qs": "*",
+  	"request": "*"
+   },
+  "engine": "node 0.6.x"
+}
