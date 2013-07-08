@@ -55,7 +55,7 @@ RUN cd /root && npm install
 ENV DEBIAN_FRONTEND dialog
 
 ## CONFIG
-ENV APP_DNS
+ENV APP_DNS UTlPL1-f2W1TAAAW.runnableapp.com
 ENV RUNNABLE_USER_DIR /root
 ENV RUNNABLE_SERVICE_CMDS couchdb; redis-server; mongod; mysqld
 ENV RUNNABLE_START_CMD npm start
