@@ -60,7 +60,7 @@ RUN apt-get install -y -q nodejs
 
 ## APP
 ADD hello_world /root
-RUN cd root && source $HOME/.gvm/scripts/gvm && gvm use go1.1.1 && go build hello_world.go
+RUN bash -c "cd root && source $HOME/.gvm/scripts/gvm && gvm use go1.1.1 && go build hello_world.go"
 
 # RESET
 ENV DEBIAN_FRONTEND dialog
