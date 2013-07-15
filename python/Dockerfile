@@ -56,5 +56,5 @@ ENV DEBIAN_FRONTEND dialog
 
 ## CONFIG
 ENV RUNNABLE_USER_DIR /root
-ENV RUNNABLE_SERVICE_CMDS memcached -d -u www-data; /etc/init.d/apache2 restart; mysqld
+ENV RUNNABLE_SERVICE_CMDS memcached -d -u www-data; mysqld
 ENV RUNNABLE_START_CMD python app.py
