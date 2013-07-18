@@ -37,7 +37,7 @@ RUN apt-get install -y -q memcached
 RUN pecl install memcache
 
 ## MAGICK
-RUN apt-get install -y -q imagemagick graphicsmagick graphicsmagick-libmagick-dev-compat
+RUN apt-get install -y -q imagemagick graphicsmagick graphicsmagick-libmagick-dev-compat php5-imagick
 RUN pecl install imagick
 
 ## APACHE
