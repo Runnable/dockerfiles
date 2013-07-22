@@ -2,7 +2,7 @@
 FROM boxcar/raring
 
 # REPOS
-RUN apt-get -y update
+RUN apt-get -y update && date
 RUN apt-get install -y -q software-properties-common
 RUN add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
 RUN add-apt-repository -y ppa:chris-lea/node.js
