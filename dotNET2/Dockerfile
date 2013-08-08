@@ -36,8 +36,9 @@ RUN apt-get install -y -q nodejs
 ENV DEBIAN_FRONTEND dialog
 
 # INSTALL MONO
-sudo apt-get install mono-xsp2 mono-xsp2-base
-sudo apt-get install asp.net2-examples
+sudo apt-get install mono-complete
+sudo apt-get install mono-xsp
+sudo apt-get install mono-xsp2
 
 ## CONFIG
 ENV RUNNABLE_USER_DIR /var/www
