@@ -36,9 +36,9 @@ RUN apt-get install -y -q nodejs
 ENV DEBIAN_FRONTEND dialog
 
 # INSTALL MONO
-RUN apt-get install mono-complete
-RUN apt-get install mono-xsp
-RUN apt-get install mono-xsp2
+RUN apt-get install -y -q mono-complete
+RUN apt-get install -y -q mono-xsp
+RUN apt-get install -y -q mono-xsp2
 
 ## CONFIG
 ENV RUNNABLE_USER_DIR /var/www
