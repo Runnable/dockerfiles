@@ -34,7 +34,7 @@ RUN apt-get install -y -q build-essential g++
 RUN apt-get install -y -q apache2
 
 ## MYSQL
-RUN apt-get install -y -q mysql-client mysql-server php5-mysql
+RUN apt-get install -y -q mysql-client mysql-server
 RUN mysqld & sleep 2 && mysqladmin create mydb
 
 # LANGS
