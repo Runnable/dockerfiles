@@ -34,6 +34,7 @@ RUN apt-get install -y -q build-essential g++
 RUN apt-get install -y -q apache2
 RUN apt-get install -y -q libapache2-mod-mono mono-apache-server2
 RUN a2enmod mod_mono_auto
+RUN apt-get -y -q update
 
 ## MYSQL
 RUN apt-get install -y -q mysql-client mysql-server
