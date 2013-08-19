@@ -21,9 +21,6 @@ RUN apt-get install -y -q vim nano
 # TOOLS
 RUN apt-get install -y -q curl git make wget
 
-## MEMCACHED
-RUN apt-get install -y -q memcached
-RUN pecl install memcache
 
 # BUILD
 RUN apt-get install -y -q build-essential g++
