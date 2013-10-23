@@ -12,6 +12,9 @@ RUN apt-get -y update
 # EDITORS
 RUN apt-get install -y -q vim nano
 
+## APACHE
+RUN apt-get install -y -q apache2
+
 # TOOLS
 RUN apt-get install -y -q curl git make wget unzip
 
