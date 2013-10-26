@@ -1,69 +1,25 @@
-# runnable base
-FROM boxcar/raring
+FROM stackbrew/ubuntu:saucy
+MAINTAINER runnable.com <support@runnable.com>
 
 # REPOS
 RUN apt-get -y update
 RUN apt-get install -y -q software-properties-common
 RUN add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
-RUN echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/10gen.list
+RUN add-apt-repository -y ppa:chris-lea/node.js
 RUN apt-get -y update
 
-#SHIMS
-RUN dpkg-divert --local --rename --add /sbin/initctl
-RUN ln -s /bin/true /sbin/initctl
-ENV DEBIAN_FRONTEND noninteractive
+# INSTALL
+RUN apt-get install -y -q build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config libmysqlclient-dev libpq-dev make wget unzip git vim nano nodejs mysql-client mysql-server gawk libgdbm-dev libffi-dev
 
-# EDITORS
-RUN apt-get install -y -q vim
-RUN apt-get install -y -q nano
+# RVM
+RUN curl -L get.rvm.io | bash -s stable --auto
+RUN /usr/local/rvm/bin/rvm install 2.0.0
+RUN /usr/local/rvm/bin/rvm --default use 2.0.0
 
-# TOOLS
-RUN apt-get install -y -q curl
-RUN apt-get install -y -q git
-RUN apt-get install -y -q make
-RUN apt-get install -y -q wget
-# RUN apt-get install -y -q supervisor
+# GEMS
+RUN gem install rails -v 4.0.0 mysql2
 
-# BUILD
-RUN apt-get install -y -q build-essential
-RUN apt-get install -y -q g++
-
-# SERVICES
-
-## MEMCACHED
-RUN apt-get install -y -q memcached
-#RUN pecl install -y memcache
-
-## REDIS
-RUN apt-get install -y -q redis-server
-
-## MONGO
-RUN apt-get install -y -q mongodb-10gen
-
-## POSTGRES
-RUN echo "#!/bin/sh\nexit 101" > /usr/sbin/policy-rc.d; chmod +x /usr/sbin/policy-rc.d
-RUN apt-get install -y -q postgresql-9.1
-RUN apt-get install -y -q postgresql-contrib-9.1
-RUN rm /usr/sbin/policy-rc.d
-RUN apt-get install -y -q pgadmin3
-
-## MAGICK
-RUN apt-get install -y -q imagemagick
-RUN apt-get install -y -q graphicsmagick
-RUN apt-get install -y -q graphicsmagick-libmagick-dev-compat
-# #RUN pecl install -y imagick
-
-## MYSQL
-RUN apt-get install -y -q mysql-client
-RUN apt-get install -y -q mysql-server
-
-# LANGS
-
-## RUBY
-RUN apt-get install -y -q ruby
-
-## RAILS
-RUN gem install rails
-
-ENV DEBIAN_FRONTEND dialog
+# CONFIG
+ENV RUNNABLE_USER_DIR /var/www/app/ 
+ENV RUNNABLE_START_CMD rails server -p 80
+ENV RUNNABLE_SERVICE_CMDS rm -rf /var/www/app/tmp/pids/server.pid; mysqld;
