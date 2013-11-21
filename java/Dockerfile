@@ -24,6 +24,7 @@ RUN apt-get install -y -q build-essential g++
 
 # LANGS
 RUN apt-get install -y -q openjdk-7-jre-headless
+RUN apt-get install -y -q openjdk-7-jdk
 
 ## NODE
 RUN apt-get install -y -q nodejs
