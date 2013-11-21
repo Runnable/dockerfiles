@@ -23,10 +23,7 @@ RUN apt-get install -y -q curl git make wget
 RUN apt-get install -y -q build-essential g++
 
 # LANGS
-
-RUN add-apt-repository ppa:webupd8team/java
-RUN apt-get update
-RUN apt-get install -y oracle-java7-installer
+RUN apt-get install -y -q openjdk-7-jre-headless
 
 ## NODE
 RUN apt-get install -y -q nodejs
