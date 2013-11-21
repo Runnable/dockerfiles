@@ -26,7 +26,7 @@ RUN apt-get install -y -q build-essential g++
 
 RUN add-apt-repository ppa:webupd8team/java
 RUN apt-get update
-RUN apt-get install oracle-java7-installer
+RUN apt-get install -y oracle-java7-installer
 
 ## NODE
 RUN apt-get install -y -q nodejs
