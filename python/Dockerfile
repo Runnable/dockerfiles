@@ -6,7 +6,7 @@ RUN apt-get -y update
 RUN apt-get install -y -q software-properties-common
 RUN add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
 RUN add-apt-repository -y ppa:chris-lea/node.js
-RUN apt-get -y update
+RUN apt-get -y update --fix-missing
 
 #SHIMS
 RUN dpkg-divert --local --rename --add /sbin/initctl
@@ -27,8 +27,6 @@ RUN apt-get install -y -q build-essential g++
 ## MEMCACHED
 RUN apt-get install -y -q memcached
 
-## MAGICK
-RUN apt-get install -y -q imagemagick graphicsmagick graphicsmagick-libmagick-dev-compat
 
 ## APACHE
 RUN apt-get install -y -q apache2
@@ -51,10 +49,4 @@ RUN apt-get install -y -q nodejs
 ## APP
 ADD app /root
 
-# RESET
-ENV DEBIAN_FRONTEND dialog
-
-## CONFIG
-ENV RUNNABLE_USER_DIR /root
-ENV RUNNABLE_SERVICE_CMDS memcached -d -u www-data; mysqld
-ENV RUNNABLE_START_CMD python app.py
+RUN apt-get -y update --fix-missing
