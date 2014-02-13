@@ -39,6 +39,8 @@ RUN apt-get install -y -q mongodb-10gen
 ## SETUP DBPATH
 RUN mkdir -p /data/db
 
+RUN apt-get -y update --fix-missing
+
 ## MYSQL
 RUN apt-get install -y -q mysql-client mysql-server
 
@@ -50,6 +52,7 @@ RUN apt-get install -y -q nodejs
 ## APP
 ADD helloworld /root
 RUN cd /root && npm install
+
 
 # RESET
 ENV DEBIAN_FRONTEND dialog
