@@ -1,44 +1,27 @@
-# runnable base
-FROM boxcar/raring
+FROM ubuntu:latest
+MAINTAINER Praful Rana <praful@runnable.com>
 
-# REPOS
-RUN apt-get -y update --fix-missing && date
-RUN apt-get install -y -q software-properties-common
-RUN add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
-RUN add-apt-repository -y ppa:chris-lea/node.js
+# Install packages
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get -y install supervisor git apache2 libapache2-mod-php5 mysql-server php5-mysql pwgen
 
-#SHIMS
-RUN dpkg-divert --local --rename --add /sbin/initctl
-RUN ln -s /bin/true /sbin/initctl
-ENV DEBIAN_FRONTEND noninteractive
+# Add image configuration and scripts
+ADD start-apache2.sh /start-apache2.sh
+ADD start-mysqld.sh /start-mysqld.sh
+ADD run.sh /run.sh
+RUN chmod 755 /*.sh
+ADD my.cnf /etc/mysql/conf.d/my.cnf
+ADD supervisord-apache2.conf /etc/supervisor/conf.d/supervisord-apache2.conf
+ADD supervisord-mysqld.conf /etc/supervisor/conf.d/supervisord-mysqld.conf
 
-# EDITORS
-RUN apt-get install -y -q vim nano
+# Add MySQL utils
+ADD create_mysql_admin_user.sh /create_mysql_admin_user.sh
+ADD import_sql.sh /import_sql.sh
+ADD create_db.sh /create_db.sh
+RUN chmod 755 /*.sh
 
-# TOOLS
-RUN apt-get install -y -q curl git make wget
+# Configure /app folder with sample app
+RUN git clone https://github.com/prafulrana/php.git /app
+RUN mkdir -p /app && rm -fr /var/www && ln -s /app /var/www
 
-# BUILD
-RUN apt-get install -y -q build-essential g++
-
-## NODE
-RUN apt-get install -y -q nodejs
-
-
-## MYSQL
-RUN apt-get install -y -q mysql-client mysql-server
-RUN mysqld & sleep 2 && mysqladmin create mydb
-
-## PHP
-RUN apt-get install -y -q php5 php5-cli php5-dev php-pear php5-fpm php5-common php5-mcrypt php5-gd php-apc
-
-## APACHE
-RUN apt-get install -y -q apache2  libapache2-mod-php5
-
-## UPDATE APT
-RUN apt-get -y update --fix-missing
-
-## APP
-RUN rm -rf /var/www/*
-ADD app /var/www
-
+EXPOSE 80 3306
+CMD ["/run.sh"]
