@@ -52,7 +52,10 @@ pg_restore_command=$1
 if [[ -n "$pg_restore_command" ]]; then
 	eval $pg_restore_command
 else
-	pg_restore --no-acl --no-owner -v -d $POSTGRES_DB $SEED_FILE
+	if [ -f $SEED_FILE ]
+	then
+		pg_restore --no-acl --no-owner -v -d $POSTGRES_DB $SEED_FILE
+	fi
 fi
 
 echo 'PostgreSQL init process complete; ready for start up.'
