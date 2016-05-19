@@ -1,0 +1,10 @@
+{
+    "bootstrap": true,
+    "server": true,
+    "datacenter": "runnable",
+    "data_dir": "/tmp/consul",
+    "log_level": "INFO",
+    "ui_dir": "/consul",
+    "client_addr": "0.0.0.0",
+    "node_name": "consul-server"
+}
