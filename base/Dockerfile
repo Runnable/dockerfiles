@@ -3,7 +3,7 @@ FROM debian:jessie
 MAINTAINER Runnable, Inc.
 
 # Install main dependencies from apt-get
-RUN apt-get update && apt-get install --no-install-recommends -y --force-yes\
+RUN apt-get update && apt-get install --no-install-recommends -y --force-yes \
     autoconf \
     automake \
     bzip2 \
@@ -51,6 +51,15 @@ RUN apt-get update && apt-get install --no-install-recommends -y --force-yes\
     reprepro \
     s3cmd \
     unzip \
+    ruby \
+    nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
+# Get Ruby & Node
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
+RUN apt-get update && apt-get install --no-install-recommends -y --force-yes \
+    ruby \
+    nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 # Install gosu (postgres refuses to be run as root)
@@ -68,24 +77,3 @@ RUN wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/dow
 # Initialize gosu
 RUN chmod +x /usr/local/bin/gosu
 RUN gosu nobody true
-
-# Install nvm and install latest Node
-RUN git clone https://github.com/creationix/nvm.git $HOME/.nvm
-RUN chmod +x ~/.nvm/nvm.sh
-RUN echo 'export NVM_DIR="$HOME/.nvm"\n[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm' >> ~/.bashrc
-RUN /bin/bash -c "~/.nvm/nvm.sh \
-    && source ~/.bashrc \
-    && nvm install node \
-    && nvm alias default node \
-    && npm install -g gulp bower grunt-cli"
-
-# Install rbenv and ruby-build and install latest Ruby
-RUN git clone https://github.com/sstephenson/rbenv.git /root/.rbenv
-RUN git clone https://github.com/sstephenson/ruby-build.git /root/.rbenv/plugins/ruby-build
-RUN /root/.rbenv/plugins/ruby-build/install.sh
-ENV PATH /root/.rbenv/bin:$PATH
-RUN echo 'export PATH=/root/.rbenv/bin:$PATH' >> ~/.bashrc
-RUN echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-RUN rbenv install $(rbenv install -l | grep -v - | tail -1)
-RUN rbenv global $(rbenv versions | tail -1)
-RUN bin/bash -c "source ~/.bashrc && gem install bundler"

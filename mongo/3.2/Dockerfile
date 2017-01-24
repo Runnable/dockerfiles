@@ -1,4 +1,4 @@
-FROM runnable/base:1.0.0
+FROM runnable/base:1.1.0
 
 # Install MongoDB 3.2
 
