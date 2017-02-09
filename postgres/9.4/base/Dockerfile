@@ -51,12 +51,15 @@ RUN buildDependencies="build-essential \
   && rm -rf /tmp/build /var/lib/apt/lists/*
 
 # Install PostGIS
-ENV POSTGIS_MAJOR 2.2
+ENV POSTGIS_MAJOR 2.3
+ENV POSTGIS_VERSION 2.3.1+dfsg-1.pgdg80+1
+
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
-      "postgresql-${PG_MAJOR}-postgis-${POSTGIS_MAJOR}" \
-      postgis \
-  && rm -rf /var/lib/apt/lists/*
+      && apt-get install -y --no-install-recommends \
+           postgresql-$PG_MAJOR-postgis-$POSTGIS_MAJOR=$POSTGIS_VERSION \
+           postgresql-$PG_MAJOR-postgis-$POSTGIS_MAJOR-scripts=$POSTGIS_VERSION \
+           postgis=$POSTGIS_VERSION \
+      && rm -rf /var/lib/apt/lists/*
 
 # make the sample config easier to munge (and "correct by default")
 RUN mv -v /usr/share/postgresql/$PG_MAJOR/postgresql.conf.sample /usr/share/postgresql/ \
